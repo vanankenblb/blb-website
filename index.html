@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLB Johannisthal</title>
+  <style>
+    :root {
+      --blb-blue: #0f3b78;
+      --blb-blue-dark: #0a2a55;
+      --blb-blue-light: #eaf1fb;
+      --text: #1c2430;
+      --muted: #5a6778;
+      --bg: #f5f7fb;
+      --white: #ffffff;
+      --border: #d7dfeb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: var(--blb-blue-dark);
+      color: var(--white);
+      font-size: 14px;
+    }
+
+    .topbar-inner,
+    .container,
+    .footer-inner {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 92px;
+      height: auto;
+      display: block;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--blb-blue);
+    }
+
+    .brand-text p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-weight: 700;
+      color: var(--blb-blue);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--blb-blue) 0%, var(--blb-blue-dark) 100%);
+      color: var(--white);
+      padding: 64px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero h2 {
+      margin: 0 0 18px;
+      font-size: 42px;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0 0 28px;
+      font-size: 18px;
+      max-width: 700px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--blb-blue);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.55);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 24px;
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      color: var(--blb-blue);
+    }
+
+    .section-lead {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 59, 120, 0.06);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--blb-blue);
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .card a {
+      font-weight: 700;
+      color: var(--blb-blue);
+    }
+
+    .cta-band {
+      background: var(--blb-blue-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cta-band .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 0;
+    }
+
+    .cta-band h3 {
+      margin: 0 0 6px;
+      color: var(--blb-blue);
+      font-size: 26px;
+    }
+
+    .cta-band p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      background: var(--blb-blue-dark);
+      color: var(--white);
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      padding: 32px 0;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 24px;
+    }
+
+    .footer-inner h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: right;
+    }
+
+    .footer-note {
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .cards,
+      .footer-inner,
+      .cta-band .container,
+      .header-inner {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        text-align: left;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+
+      .brand-text h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="#kontakt">Kontakt</a>
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo.svg" alt="BLB Logo">
+        <div class="brand-text">
+          <h1>BLB Johannisthal</h1>
+          <p>Beratungsstelle der Berliner Lohnsteuerberatung für Arbeitnehmer e.V.</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#mitgliedschaft">Mitgliedschaft</a>
+        <a href="#service">Service</a>
+        <a href="https://cloud.blb-johannisthal.de">Mitglieder-Portal</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h2>Ihre Steuerunterlagen einfach, sicher und direkt online einreichen</h2>
+        <p>
+          Nutzen Sie unser Portal, um Belege hochzuladen, Unterlagen herunterzuladen
+          und künftig auch Termine online zu vereinbaren.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://cloud.blb-johannisthal.de">Belege hochladen</a>
+          <a class="btn btn-secondary" href="#service">Formulare & Checklisten</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Auf einen Blick</h3>
+        <ul>
+          <li>Digitale Übermittlung Ihrer Unterlagen</li>
+          <li>Downloads für Beitritt und Vorbereitung</li>
+          <li>Perspektivisch Online-Terminvergabe</li>
+          <li>Klare, schlanke und seriöse Nutzerführung</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="leistungen">
+    <div class="container">
+      <h2>Leistungen</h2>
+      <p class="section-lead">
+        Persönliche Unterstützung rund um Ihre Einkommensteuererklärung – digital vorbereitet, vertraulich betreut.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Belege hochladen</h3>
+          <p>
+            Reichen Sie Ihre Unterlagen sicher online ein. Der Upload erfolgt direkt in unser geschütztes Portal.
+          </p>
+          <a href="https://cloud.blb-johannisthal.de">Zum Upload →</a>
+        </div>
+
+        <div class="card" id="mitgliedschaft">
+          <h3>Mitgliedschaft</h3>
+          <p>
+            Hier finden Sie künftig Informationen zur Mitgliedschaft, Beiträge und wichtige Unterlagen für den Einstieg.
+          </p>
+          <a href="#service">Unterlagen ansehen →</a>
+        </div>
+
+        <div class="card" id="service">
+          <h3>Service</h3>
+          <p>
+            Checklisten, Formulare und weitere Dokumente stellen wir Ihnen übersichtlich zum Download bereit.
+          </p>
+          <a href="#downloads">Zu den Downloads →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div>
+        <h3>Terminvereinbarung folgt</h3>
+        <p>
+          Die Online-Buchung freier Termine wird als nächster Schritt eingebunden.
+        </p>
+      </div>
+      <a class="btn btn-primary" href="#kontakt">Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+  <section class="section" id="downloads">
+    <div class="container">
+      <h2>Downloads</h2>
+      <p class="section-lead">
+        Hinterlegen Sie hier später Ihre PDF-Dateien, zum Beispiel Beitrittserklärung, Checkliste und weitere Hinweise.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Beitrittserklärung</h3>
+          <p>PDF-Datei für neue Mitglieder.</p>
+          <a href="#">PDF verlinken →</a>
+        </div>
+
+        <div class="card">
+          <h3>Checkliste</h3>
+          <p>Unterlagen für die Steuererklärung auf einen Blick.</p>
+          <a href="#">PDF verlinken →</a>
+        </div>
+
+        <div class="card">
+          <h3>Hinweise</h3>
+          <p>Weitere wichtige Informationen für Mitglieder.</p>
+          <a href="#">PDF verlinken →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="kontakt">
+    <div class="footer-inner">
+      <div>
+        <h4>BLB Johannisthal</h4>
+        <div>Beratungsstelle der Berliner Lohnsteuerberatung für Arbeitnehmer e.V.</div>
+        <div class="footer-note">
+          Adresse, Telefonnummer, E-Mail und Sprechzeiten kannst du hier direkt ergänzen.
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="https://cloud.blb-johannisthal.de">Mitglieder-Portal</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
