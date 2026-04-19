@@ -4,19 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BLB Johannisthal</title>
+
   <style>
     :root {
-      --blue: #0f3b78;
-      --blue-dark: #0a2a55;
-      --bg: #f5f7fb;
+      --primary: #0f3b78;   /* falls Logo-Blau → kann angepasst werden */
+      --bg: #f6f8fb;
       --white: #ffffff;
       --text: #1c2430;
-      --muted: #5a6778;
-      --border: #d9e1ec;
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
@@ -24,169 +18,105 @@
       font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-    }
-
-    .wrap {
-      width: min(900px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
       display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 24px 0;
+      justify-content: center;
     }
 
-    .header-inner img {
-      width: 84px;
-      height: auto;
-      display: block;
-    }
-
-    .title h1 {
-      margin: 0;
-      font-size: 34px;
-      color: var(--blue);
-    }
-
-    .hero {
-      padding: 56px 0 36px;
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 40px 20px;
       text-align: center;
     }
 
-    .hero h2 {
-      margin: 0 0 12px;
-      font-size: 34px;
-      color: var(--blue-dark);
+    .logo {
+      margin-bottom: 20px;
     }
 
-    .hero p {
-      margin: 0 auto;
-      max-width: 700px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.5;
+    .logo img {
+      width: 100px;
+      height: auto;
     }
 
-    .actions {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      padding: 12px 0 64px;
+    h1 {
+      margin: 10px 0 30px;
+      font-size: 28px;
+      color: var(--primary);
     }
 
     .card {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 10px 24px rgba(15, 59, 120, 0.06);
-      text-align: left;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
     }
 
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 24px;
-      color: var(--blue);
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: var(--primary);
     }
 
     .card p {
       margin: 0 0 20px;
-      color: var(--muted);
-      line-height: 1.5;
+      font-size: 15px;
+      color: #555;
     }
 
     .btn {
       display: inline-block;
-      background: var(--blue);
-      color: var(--white);
+      background: var(--primary);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
       text-decoration: none;
-      padding: 13px 18px;
-      border-radius: 10px;
-      font-weight: 700;
+      font-weight: bold;
     }
 
-    .btn:hover {
-      background: var(--blue-dark);
+    .btn.secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
     }
 
-    @media (max-width: 700px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .title h1 {
-        font-size: 28px;
-      }
-
-      .hero h2 {
-        font-size: 28px;
-      }
-
-      .actions {
-        grid-template-columns: 1fr;
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 24px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="wrap header-inner">
+
+  <div class="container">
+
+    <div class="logo">
       <img src="logo.svg" alt="BLB Logo">
-      <div class="title">
-        <h1>BLB Johannisthal</h1>
-      </div>
     </div>
-  </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h2>Willkommen</h2>
-      <p>
-        Hier finden Sie die wichtigsten Funktionen auf einen Blick.
-      </p>
-    </section>
+    <h1>BLB Johannisthal</h1>
 
-    <section class="actions">
-      <div class="card">
-        <h3>Belege hochladen</h3>
-        <p>
-          Laden Sie Ihre Unterlagen bequem online in das Mitgliederportal hoch.
-        </p>
-        <a class="btn" href="https://cloud.blb-johannisthal.de">Zum Upload</a>
-      </div>
+    <div class="card">
+      <h2>Belege hochladen</h2>
+      <p>Unterlagen direkt sicher über das Portal einreichen.</p>
+      <a class="btn" href="https://cloud.blb-johannisthal.de">Zum Upload</a>
+    </div>
 
-      <div class="card">
-        <h3>Formulare und Checklisten</h3>
-        <p>
-          Hier finden Sie wichtige Unterlagen und Hilfen zum Download.
-        </p>
-        <a class="btn" href="#">Zu den Downloads</a>
-      </div>
+    <div class="card">
+      <h2>Formulare & Checklisten</h2>
+      <p>Wichtige Dokumente und Vorlagen.</p>
+      <a class="btn secondary" href="#">Öffnen</a>
+    </div>
 
-      <div class="card">
-        <h3>Terminvereinbarung</h3>
-        <p>
-          Die Online-Terminvergabe wird in Kürze bereitgestellt.
-        </p>
-        <a class="btn" href="#">Demnächst verfügbar</a>
-      </div>
+    <div class="card">
+      <h2>Terminvereinbarung</h2>
+      <p>Online-Termine werden in Kürze verfügbar sein.</p>
+      <a class="btn secondary" href="#">Demnächst</a>
+    </div>
 
-      <div class="card">
-        <h3>Downloadliste</h3>
-        <p>
-          Weitere Dokumente und Informationen werden hier nach und nach ergänzt.
-        </p>
-        <a class="btn" href="#">Zur Übersicht</a>
-      </div>
-    </section>
-  </main>
+  </div>
+
 </body>
 </html>
